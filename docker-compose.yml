@@ -1,0 +1,18 @@
+# docker-compose.yml
+
+version: "3"
+
+services:
+  express:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: example-expressjs
+    environment: 
+            - TRANSPORTER=nats://10.8.36.251:30022
+    restart: always
+    volumes:
+      - ./:/app
+      - /app/node_modules
+    ports:
+      - 3000:3000
