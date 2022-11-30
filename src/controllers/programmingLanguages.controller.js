@@ -1,6 +1,8 @@
+const UserModel = require('../models/user.model')
+
 async function get(req, res, next) {
   try {
-      res.json({ message: 'hello'});
+      res.json("sdsdsd");
   } catch (err) {
       console.error(`Error while getting programming languages`, err.message);
       next(err);
@@ -9,7 +11,9 @@ async function get(req, res, next) {
 
 async function create(req, res, next) {
   try {
-    res.json({ message: 'hello'});
+    console.log(req.body)
+    const data = await UserModel.create(req.body)
+    res.json(data);
   } catch (err) {
     console.error(`Error while creating programming language`, err.message);
     next(err);
@@ -18,7 +22,7 @@ async function create(req, res, next) {
 
 async function update(req, res, next) {
   try {
-    res.json({ message: 'hello'});
+    res.json("sdsdsd");
   } catch (err) {
     console.error(`Error while updating programming language`, err.message);
     next(err);
@@ -27,7 +31,7 @@ async function update(req, res, next) {
 
 async function remove(req, res, next) {
   try {
-    res.json({ message: 'hello'});
+    res.json("sdsdsd");
   } catch (err) {
     console.error(`Error while deleting programming language`, err.message);
     next(err);

@@ -1,17 +1,27 @@
-const express = require('express');
+const express = require("express");
 const router = express.Router();
-const programmingLanguagesController = require('../controllers/programmingLanguages.controller');
+const { validator } = require('express-fastest-validator');
+const programmingLanguagesController = require("../controllers/programmingLanguages.controller");
 
 /* GET programming languages. */
-router.get('/', programmingLanguagesController.get);
-  
+router.get("/", programmingLanguagesController.get);
+
 /* POST programming language */
-router.post('/', programmingLanguagesController.create);
+router.post(
+  "/",
+  validator({
+    body: {
+      name: { type: "string", min: 3, max: 15 },
+      age: { type: "number", min: 8 },
+    },
+  }),
+  programmingLanguagesController.create
+);
 
 /* PUT programming language */
-router.put('/:id', programmingLanguagesController.update);
+router.put("/:id", programmingLanguagesController.update);
 
 /* DELETE programming language */
-router.delete('/:id', programmingLanguagesController.remove);
+router.delete("/:id", programmingLanguagesController.remove);
 
 module.exports = router;
