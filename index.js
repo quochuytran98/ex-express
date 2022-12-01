@@ -44,7 +44,7 @@ var task = cron.schedule('* * * * * *', require('./src/services/telegraf.service
   scheduled: false
 });
 
-task.start();
+// task.start();
 app.listen(port, '0.0.0.0', () => {
   console.log(`Example app listening at http://localhost:${port}`)
 });
