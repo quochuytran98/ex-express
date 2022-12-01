@@ -40,9 +40,9 @@ app.use((err, req, res, next) => {
   return;
 });
 
-var task = cron.schedule('* * * * * *', require('./src/services/telegraf.service'), {
-  scheduled: false
-});
+// var task = cron.schedule('* * * * * *', require('./src/services/telegraf.service'), {
+//   scheduled: false
+// });
 
 // task.start();
 app.listen(port, '0.0.0.0', () => {
