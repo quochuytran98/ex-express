@@ -10,7 +10,7 @@ const port = process.env.PORT || 3000;
 const programmingLanguagesRouter = require('./src/routes/frontend.route');
 
 
-mongoose.connect('mongodb://localhost:27017/botdb',
+mongoose.connect(process.env.MONGO_URL,
   {
     useNewUrlParser: true,
     useUnifiedTopology: true
