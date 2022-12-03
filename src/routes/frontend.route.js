@@ -1,12 +1,15 @@
 const express = require("express");
 const router = express.Router();
 const { validator } = require('express-fastest-validator');
-const programmingLanguagesController = require("../controllers/programmingLanguages.controller");
+const profile = require("../controllers/profile.controller");
+const crawlerController = require("../controllers/crawler.controller")
 
 /* GET programming languages. */
-router.get("/", programmingLanguagesController.get);
+router.get("/", profile.get);
 /* GET programming languages. */
-router.get("/profile", programmingLanguagesController.profile);
+router.get("/love", profile.profile);
+/* GET programming languages. */
+router.get("/send-message/:msg", crawlerController.sendMessage);
 
 /* POST programming language */
 router.post(
@@ -17,13 +20,13 @@ router.post(
       age: { type: "number", min: 8 },
     },
   }),
-  programmingLanguagesController.create
+  profile.create
 );
 
 /* PUT programming language */
-router.put("/:id", programmingLanguagesController.update);
+router.put("/:id", profile.update);
 
 /* DELETE programming language */
-router.delete("/:id", programmingLanguagesController.remove);
+router.delete("/:id", profile.remove);
 
 module.exports = router;

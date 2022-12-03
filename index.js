@@ -1,4 +1,5 @@
 const express = require('express');
+const path = require('path');
 const mongoose = require("mongoose");
 require('dotenv').config()
 const cron = require('node-cron');
@@ -6,7 +7,7 @@ const bodyParser = require('body-parser');
 const Logger = require('morgan')
 const app = express();
 const port = process.env.PORT || 3000;
-const programmingLanguagesRouter = require('./src/routes/programmingLanguages.route');
+const programmingLanguagesRouter = require('./src/routes/frontend.route');
 
 
 mongoose.connect('mongodb://localhost:27017/botdb',
@@ -31,6 +32,10 @@ app.use(
 
 app.use('/', programmingLanguagesRouter);
 
+
+/* use view ejs */
+app.set('views', path.join(__dirname, './src/views'))
+app.set('view engine','ejs');
 /* Error handler middleware */
 app.use((err, req, res, next) => {
   const statusCode = err.statusCode || 500;
@@ -40,11 +45,6 @@ app.use((err, req, res, next) => {
   return;
 });
 
-// var task = cron.schedule('* * * * * *', require('./src/services/telegraf.service'), {
-//   scheduled: false
-// });
-
-// task.start();
 app.listen(port, '0.0.0.0', () => {
   console.log(`Example app listening at http://localhost:${port}`)
 });
