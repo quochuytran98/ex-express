@@ -10,7 +10,7 @@ const port = process.env.PORT || 3000;
 const programmingLanguagesRouter = require('./src/routes/frontend.route');
 
 
-mongoose.connect(process.env.MONGO_URL,
+mongoose.connect(process.env.MONGO_URL || 'mongodb+srv://tqhuy1998bt:Quochuy98@cluster0.kikihux.mongodb.net/?retryWrites=true&w=majority',
   {
     useNewUrlParser: true,
     useUnifiedTopology: true
