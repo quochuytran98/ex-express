@@ -8,6 +8,14 @@ async function get(req, res, next) {
       next(err);
   }
 }
+async function profile(req, res, next) {
+  try {
+      res.json("sdsdsd");
+  } catch (err) {
+      console.error(`Error while getting programming languages`, err.message);
+      next(err);
+  }
+}
 
 async function create(req, res, next) {
   try {
@@ -42,5 +50,6 @@ module.exports = {
   get,
   create,
   update,
+  profile,
   remove
 };

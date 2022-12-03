@@ -5,6 +5,8 @@ const programmingLanguagesController = require("../controllers/programmingLangua
 
 /* GET programming languages. */
 router.get("/", programmingLanguagesController.get);
+/* GET programming languages. */
+router.get("/profile", programmingLanguagesController.profile);
 
 /* POST programming language */
 router.post(
