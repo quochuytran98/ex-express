@@ -7,7 +7,7 @@ const crawlerController = require("../controllers/crawler.controller")
 /* GET programming languages. */
 router.get("/", profile.get);
 /* GET programming languages. */
-router.get("/love", profile.profile);
+router.get("/love/:msg", profile.profile);
 /* GET programming languages. */
 router.get("/send-message/:msg", crawlerController.sendMessage);
 
