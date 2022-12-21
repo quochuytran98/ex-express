@@ -1,14 +1,38 @@
 const mongoose = require("mongoose");
-
+const _ = require("lodash");
+const UserConstant = require("../utils/constants/userModelConstant");
 const UserSchema = new mongoose.Schema(
   {
-    name: {
+    fullName: {
       type: String,
-      required: true,
+      require: true,
     },
-    age: {
-      type: Number,
-      default: 0,
+    phone: {
+      type: String,
+      require: true,
+    },
+    email: {
+      type: String,
+      require: true,
+    },
+    gender: {
+      type: String,
+      enum: _.values(UserConstant.GENDER),
+    },
+    avatar: {
+      type: String,
+    },
+    state: {
+      type: String,
+      enum: _.values(UserConstant.STATE),
+    },
+    friends: {
+      type: Array,
+      default: [],
+    },
+    password: {
+      type: String,
+      require: true,
     },
   },
   {
@@ -16,6 +40,4 @@ const UserSchema = new mongoose.Schema(
   }
 );
 
-const User = mongoose.model("User", UserSchema);
-
-module.exports = User;
+module.exports = mongoose.model("Users", UserSchema);

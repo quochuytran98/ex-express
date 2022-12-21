@@ -7,7 +7,7 @@ const bodyParser = require('body-parser');
 const Logger = require('morgan')
 const app = express();
 const port = process.env.PORT || 3000;
-const programmingLanguagesRouter = require('./src/routes/frontend.route');
+const route = require('./src/routes/frontend.route');
 
 
 mongoose.connect(process.env.MONGO_URL || 'mongodb+srv://tqhuy1998bt:Quochuy98@cluster0.kikihux.mongodb.net/?retryWrites=true&w=majority',
@@ -30,7 +30,7 @@ app.use(
   })
 );
 
-app.use('/', programmingLanguagesRouter);
+app.use('/', route);
 
 
 /* use view ejs */

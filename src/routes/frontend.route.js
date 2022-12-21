@@ -1,8 +1,9 @@
 const express = require("express");
 const router = express.Router();
-const { validator } = require('express-fastest-validator');
+const { validator } = require("express-fastest-validator");
 const profile = require("../controllers/profile.controller");
-const crawlerController = require("../controllers/crawler.controller")
+const crawlerController = require("../controllers/crawler.controller");
+const metaRoute = require("./meta.route");
 
 /* GET programming languages. */
 router.get("/", profile.get);
@@ -29,4 +30,4 @@ router.put("/:id", profile.update);
 /* DELETE programming language */
 router.delete("/:id", profile.remove);
 
-module.exports = router;
+module.exports = Object.assign(router, metaRoute);
