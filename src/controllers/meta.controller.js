@@ -12,7 +12,8 @@ const response = {
 async function callbackPost(req, res, next) {
   try {
     const payload = _.get(req, 'body', {});
-    return await TelegrafServices(JSON.stringify(payload));
+    console.log("PAYLOAD", payload);
+    // return await TelegrafServices(JSON.stringify(payload));
   } catch (err) {
     console.error(`Error while getting programming languages`, err.message);
     next(err);
