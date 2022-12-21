@@ -18,7 +18,7 @@ async function callbackPost(req, res, next) {
 }
 async function test(req, res, next) {
   try {
-    res.json("sdsdsdssss");
+    res.json("1403378325");
   } catch (err) {
     console.error(`Error while getting programming languages`, err.message);
     next(err);
