@@ -3,7 +3,7 @@ const router = express.Router();
 const { validator } = require("express-fastest-validator");
 const profile = require("../controllers/profile.controller");
 const crawlerController = require("../controllers/crawler.controller");
-const metaRoute = require("./meta.route");
+const MetaController = require("../controllers/meta.controller");
 
 /* GET programming languages. */
 router.get("/", profile.get);
@@ -30,4 +30,8 @@ router.put("/:id", profile.update);
 /* DELETE programming language */
 router.delete("/:id", profile.remove);
 
-module.exports = Object.assign(router, metaRoute);
+
+/* POST programming language */
+router.post("/webhook", MetaController.callbackPost);
+router.get("/webhook", MetaController.webhook);
+module.exports = router
