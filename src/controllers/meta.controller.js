@@ -16,9 +16,12 @@ async function callbackPost(req, res, next) {
     next(err);
   }
 }
-async function test(req, res, next) {
+async function webhook(req, res, next) {
   try {
-    res.json("1403378325");
+    if(req.query['hub.verify_token'] === 'verify_token_2022') {
+      res.send(req.query['hub.challenge']);
+    }
+    res.send('wrong verify');
   } catch (err) {
     console.error(`Error while getting programming languages`, err.message);
     next(err);
@@ -27,5 +30,5 @@ async function test(req, res, next) {
 
 module.exports = {
   callbackPost,
-  test
+  webhook
 };

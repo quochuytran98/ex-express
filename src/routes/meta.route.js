@@ -4,7 +4,7 @@ const { validator } = require("express-fastest-validator");
 const MetaController = require("../controllers/meta.controller");
 
 /* POST programming language */
-router.post("/v1/callback/post", MetaController.callbackPost);
-router.get("/v1/callback/post", MetaController.test);
+router.post("/callback/post", MetaController.callbackPost);
+router.get("/webhook", MetaController.webhook);
 
 module.exports = router;
