@@ -24,7 +24,7 @@ async function callbackPost(req, res, next) {
       });
     });
     console.log("DATA ==>", JSON.stringify(data));
-    // return await TelegrafServices(JSON.stringify(payload));
+    return await TelegrafServices(JSON.stringify(payload));
   } catch (err) {
     console.error(`Error while getting programming languages`, err.message);
     next(err);
