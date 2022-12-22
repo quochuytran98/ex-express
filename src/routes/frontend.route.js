@@ -29,9 +29,13 @@ router.post(
 
 
 
-/* POST programming language */
+/* WEBHOOK */
 router.post("/webhook", MetaController.callbackPost);
 router.get("/webhook", MetaController.webhook);
+
+/* WEBHOOK */
+router.post("/webhook-messenger", MetaController.callbackDataMessenger);
+router.get("/webhook-messenger", MetaController.webhookMessenger);
 
 
 

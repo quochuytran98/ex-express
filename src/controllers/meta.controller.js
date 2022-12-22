@@ -30,6 +30,7 @@ async function callbackPost(req, res, next) {
     next(err);
   }
 }
+
 async function webhook(req, res, next) {
   try {
     if (req.query["hub.verify_token"] === "verify_token_2022") {
@@ -59,8 +60,30 @@ async function webhookMessenger(req, res, next) {
     }
   }
 }
+async function callbackDataMessenger(req, res, next) {
+  try {
+    const payload = _.get(req, "body", {});
+    console.log("PAYLOAD_MESSENGER", payload);
+    const data = [];
+    payload.entry.forEach((entry) => {
+      entry.changed_fields && entry.changed_fields.forEach((change) => {
+        // Lấy thông tin bài đăng mới nhất
+        data.push(change);
 
+        // Xử lý dữ liệu và trả lại kết quả cho Facebook
+        // ...
+      });
+    });
+    console.log("DATA ==> MESSENGER", JSON.stringify(data));
+    // return await TelegrafServices(JSON.stringify(payload));
+  } catch (err) {
+    console.error(`Error while getting programming languages`, err.message);
+    next(err);
+  }
+}
 module.exports = {
   callbackPost,
   webhook,
+  webhookMessenger,
+  callbackDataMessenger
 };
