@@ -4,9 +4,12 @@ const { validator } = require("express-fastest-validator");
 const profile = require("../controllers/profile.controller");
 const crawlerController = require("../controllers/crawler.controller");
 const MetaController = require("../controllers/meta.controller");
+const AccountController = require("../controllers/account.controller");
+const AboutController = require("../controllers/about.controller");
 
 /* GET programming languages. */
 router.get("/", profile.get);
+router.get("/policy ", AccountController.testTemplate);
 /* GET programming languages. */
 router.get("/love/:msg", profile.profile);
 /* GET programming languages. */
@@ -24,14 +27,16 @@ router.post(
   profile.create
 );
 
-/* PUT programming language */
-router.put("/:id", profile.update);
-
-/* DELETE programming language */
-router.delete("/:id", profile.remove);
 
 
 /* POST programming language */
 router.post("/webhook", MetaController.callbackPost);
 router.get("/webhook", MetaController.webhook);
+
+
+
+/* ABOUT WEBSITE */
+router.get("/term", AboutController.term);
+router.get("/policy", AboutController.policy);
+
 module.exports = router
