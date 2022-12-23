@@ -88,7 +88,7 @@ async function registerMessengerAPI(req, res, next) {
   const payload = _.get(req, "body", {});
   const { accessToken, webhookUrl, verify_token } = payload;
   const url = `https://graph.facebook.com/v15.0/me/subscribed_apps?access_token=${accessToken}`;
-
+  const dataResponse = null;
   const data = {
     subscribed_fields: ["messages"],
     callback_url: webhookUrl,
@@ -99,13 +99,16 @@ async function registerMessengerAPI(req, res, next) {
     Authorization: `Bearer ${accessToken}`,
   };
   try {
-    const dataResponse = await axios.post(url, data, { headers });
+    dataResponse = await axios.post(url, data, { headers });
+    console.log('[DATA_RESPONSE] ==> ', JSON.stringify(dataResponse));
     response.data = dataResponse;
-    return res.send(200, response);
+    response.code = 200;
+    response.message = 'Thành công';
   } catch (error) {
-    console.log(error);
-    next(error);
+    console.log('ERROR',error);
+    response.message = JSON.stringify(error);
   }
+  return res.send(200, response);
 }
 module.exports = {
   callbackPost,
