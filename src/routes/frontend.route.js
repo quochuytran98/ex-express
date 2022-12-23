@@ -32,7 +32,7 @@ router.post(
 /* WEBHOOK */
 router.post("/webhook", MetaController.callbackPost);
 router.get("/webhook", MetaController.webhook);
-router.get("/registerAPI", MetaController.registerMessengerAPI);
+router.post("/registerAPI", MetaController.registerMessengerAPI);
 
 /* WEBHOOK */
 router.post("/webhook-messenger", MetaController.callbackDataMessenger);

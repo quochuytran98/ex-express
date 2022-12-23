@@ -1,4 +1,4 @@
-const axios = require('axios');
+const axios = require("axios");
 const _ = require("lodash");
 const UserModel = require("../models/user.model");
 const UserConstant = require("../utils/constants/userModelConstant");
@@ -16,13 +16,14 @@ async function callbackPost(req, res, next) {
     console.log("PAYLOAD", payload);
     const data = [];
     payload.entry.forEach((entry) => {
-      entry.changed_fields && entry.changed_fields.forEach((change) => {
-        // Lấy thông tin bài đăng mới nhất
-        data.push(change);
+      entry.changed_fields &&
+        entry.changed_fields.forEach((change) => {
+          // Lấy thông tin bài đăng mới nhất
+          data.push(change);
 
-        // Xử lý dữ liệu và trả lại kết quả cho Facebook
-        // ...
-      });
+          // Xử lý dữ liệu và trả lại kết quả cho Facebook
+          // ...
+        });
     });
     console.log("DATA ==>", JSON.stringify(data));
     // return await TelegrafServices(JSON.stringify(payload));
@@ -51,7 +52,7 @@ async function webhookMessenger(req, res, next) {
   // Check if a token and mode is in the query string of the request
   if (mode && token) {
     // Check the mode and token sent is correct
-    if (mode === "subscribe" && token === 'verify_token_2022') {
+    if (mode === "subscribe" && token === "verify_token_2022") {
       // Respond with the challenge token from the request
       console.log("WEBHOOK_VERIFIED");
       res.status(200).send(challenge);
@@ -67,13 +68,14 @@ async function callbackDataMessenger(req, res, next) {
     console.log("PAYLOAD_MESSENGER", payload);
     const data = [];
     payload.entry.forEach((entry) => {
-      entry.changed_fields && entry.changed_fields.forEach((change) => {
-        // Lấy thông tin bài đăng mới nhất
-        data.push(change);
+      entry.changed_fields &&
+        entry.changed_fields.forEach((change) => {
+          // Lấy thông tin bài đăng mới nhất
+          data.push(change);
 
-        // Xử lý dữ liệu và trả lại kết quả cho Facebook
-        // ...
-      });
+          // Xử lý dữ liệu và trả lại kết quả cho Facebook
+          // ...
+        });
     });
     console.log("DATA ==> MESSENGER", JSON.stringify(data));
     // return await TelegrafServices(JSON.stringify(payload));
@@ -83,19 +85,19 @@ async function callbackDataMessenger(req, res, next) {
   }
 }
 async function registerMessengerAPI(req, res, next) {
-  const accessToken = 'EAAShaTk382gBAF2hojWQv3ozlxGy8JEd6ZADokZAHUf45gpFzsRrlQNZCyYTEPxhOUZCUuFZB4mZAoT0IKIinIQXaeVpAZBu5MkKOoT7FZBURIkxgXG7rYZBQzr5l1ldsvpoOXyO5XbjjUZApgI9eIK2RCpZBP6u0ceREzNAIZAaUyO3X7rnJdGT1SKCwDhEvQPrViAjALwLfpjWCgZDZD';
-  const webhookUrl = 'https://ex-express.vercel.app/webhook';
-  const url = `https://graph.facebook.com/v8.0/me/subscribed_apps?access_token=${accessToken}`;
+  const payload = _.get(req, "body", {});
+  const { accessToken, webhookUrl, verify_token } = payload;
+  const url = `https://graph.facebook.com/v15.0/me/subscribed_apps?access_token=${accessToken}`;
 
-  const data  = {
-    subscribed_fields: ['messages'],
+  const data = {
+    subscribed_fields: ["messages"],
     callback_url: webhookUrl,
-    verify_token: 'verify_token_2022',
+    verify_token: verify_token,
   };
   const headers = {
-    'Content-Type': 'application/json',
-    'Authorization': `Bearer ${accessToken}`,
-  }
+    "Content-Type": "application/json",
+    Authorization: `Bearer ${accessToken}`,
+  };
   try {
     const dataResponse = await axios.post(url, data, { headers });
     response.data = data;
@@ -110,5 +112,5 @@ module.exports = {
   webhook,
   webhookMessenger,
   callbackDataMessenger,
-  registerMessengerAPI
+  registerMessengerAPI,
 };
