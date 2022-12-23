@@ -1,3 +1,4 @@
+const axios = require('axios');
 const _ = require("lodash");
 const UserModel = require("../models/user.model");
 const UserConstant = require("../utils/constants/userModelConstant");
@@ -81,9 +82,33 @@ async function callbackDataMessenger(req, res, next) {
     next(err);
   }
 }
+async function registerMessengerAPI(req, res, next) {
+  const accessToken = 'EAAShaTk382gBAF2hojWQv3ozlxGy8JEd6ZADokZAHUf45gpFzsRrlQNZCyYTEPxhOUZCUuFZB4mZAoT0IKIinIQXaeVpAZBu5MkKOoT7FZBURIkxgXG7rYZBQzr5l1ldsvpoOXyO5XbjjUZApgI9eIK2RCpZBP6u0ceREzNAIZAaUyO3X7rnJdGT1SKCwDhEvQPrViAjALwLfpjWCgZDZD';
+  const webhookUrl = 'https://ex-express.vercel.app/webhook';
+  const url = `https://graph.facebook.com/v8.0/me/subscribed_apps?access_token=${accessToken}`;
+
+  const data  = {
+    subscribed_fields: ['messages'],
+    callback_url: webhookUrl,
+    verify_token: 'verify_token_2022',
+  };
+  const headers = {
+    'Content-Type': 'application/json',
+    'Authorization': `Bearer ${accessToken}`,
+  }
+  try {
+    const dataResponse = await axios.post(url, data, { headers });
+    response.data = data;
+    return res.send(200, dataResponse);
+  } catch (error) {
+    console.log(error);
+    next(error);
+  }
+}
 module.exports = {
   callbackPost,
   webhook,
   webhookMessenger,
-  callbackDataMessenger
+  callbackDataMessenger,
+  registerMessengerAPI
 };
