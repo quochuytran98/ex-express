@@ -3,7 +3,8 @@ const UserModel = require('../models/user.model')
 
 async function get(req, res, next) {
   try {
-      res.json("sdsdsd");
+    res.render("index");
+
   } catch (err) {
       console.error(`Error while getting programming languages`, err.message);
       next(err);
