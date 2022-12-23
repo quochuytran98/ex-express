@@ -100,8 +100,8 @@ async function registerMessengerAPI(req, res, next) {
   };
   try {
     const dataResponse = await axios.post(url, data, { headers });
-    response.data = data;
-    return res.send(200, dataResponse);
+    response.data = dataResponse;
+    return res.send(200, response);
   } catch (error) {
     console.log(error);
     next(error);
