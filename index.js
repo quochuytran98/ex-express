@@ -10,17 +10,17 @@ const port = process.env.PORT || 3000;
 const route = require('./src/routes/frontend.route');
 
 
-mongoose.connect(process.env.MONGO_URL || 'mongodb+srv://tqhuy1998bt:Quochuy98@cluster0.kikihux.mongodb.net/?retryWrites=true&w=majority',
-  {
-    useNewUrlParser: true,
-    useUnifiedTopology: true
-  }
-);
-const db = mongoose.connection;
-db.on("error", console.error.bind(console, "connection error: "));
-db.once("open", function () {
-  console.log("Connected successfully");
-});
+// mongoose.connect(process.env.MONGO_URL || 'mongodb+srv://tqhuy1998bt:Quochuy98@cluster0.kikihux.mongodb.net/?retryWrites=true&w=majority',
+//   {
+//     useNewUrlParser: true,
+//     useUnifiedTopology: true
+//   }
+// );
+// const db = mongoose.connection;
+// db.on("error", console.error.bind(console, "connection error: "));
+// db.once("open", function () {
+//   console.log("Connected successfully");
+// });
 
 app.use(Logger('combined'))
 app.use(bodyParser.json());
