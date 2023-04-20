@@ -12,6 +12,16 @@ async function sendMessage(req, res, next) {
     next(err);
   }
 }
+async function test(req, res, next) {
+  try {
+    const data = req.query
+    res.json("ok nha");
+  } catch (err) {
+    console.error(`Error while getting programming languages`, err.message);
+    next(err);
+  }
+}
 module.exports = {
     sendMessage,
+    test
 };
