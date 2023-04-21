@@ -4,6 +4,7 @@ const mongoose = require("mongoose");
 require('dotenv').config()
 const cron = require('node-cron');
 const bodyParser = require('body-parser');
+const TelegramBot = require('./src/services/chatGPT_Telegram');
 const Logger = require('morgan')
 const app = express();
 const port = process.env.PORT || 3000;
@@ -45,6 +46,7 @@ app.use((err, req, res, next) => {
   return;
 });
 
-app.listen(port, '0.0.0.0', () => {
+app.listen(port, '0.0.0.0', async  () => {
+  await TelegramBot();
   console.log(`Example app listening at http://localhost:${port}`)
 });

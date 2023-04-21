@@ -4,16 +4,15 @@ const { Configuration, OpenAIApi } = require("openai");
 const configuration = new Configuration({
   apiKey: process.env.OPENAI_API_KEY,
 });
-const openai = new OpenAIApi(configuration);
+const OpenAi = new OpenAIApi(configuration);
 
 async function chatMessage(req, res, next) {
   try {
-    const completion = await openai.createChatCompletion({
+    const completion = await OpenAi.createChatCompletion({
       model: "gpt-3.5-turbo",
       messages: [{ role: "user", content: req.body.message }],
     });
-    console.log('chatMessage', JSON.stringify(completion));
-    res.json(completion)
+    res.send({code: 200, ...completion})
   } catch (err) {
     if (err.response) {
       console.log(err.response.status);
@@ -26,14 +25,13 @@ async function chatMessage(req, res, next) {
 }
 async function chatImage(req, res, next) {
   try {
-    const response = await openai.createImage({
+    const response = await OpenAi.createImage({
       prompt: req.body.message,
       n: 2,
       size: "1024x1024",
     });
     
-    console.log('chatImage', JSON.stringify(response));
-    res.json(response);
+    res.send({code: 200, ...response.data})
   } catch (err) {
     if (err.response) {
       console.log(err.response.status);

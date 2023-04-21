@@ -3,13 +3,16 @@ const router = express.Router();
 const { validator } = require("express-fastest-validator");
 const crawlerController = require("../controllers/crawler.controller");
 const chatGPTController = require("../controllers/chatGPT.controller");
+const viewController = require("../controllers/view.controller");
 
 
-/* GET programming languages. */
+/* GET. */
 router.get("/send-message/:msg", crawlerController.sendMessage);
 router.get("/p", crawlerController.test);
-router.post("/chat", chatGPTController.chatMessage);
-router.post("/image", chatGPTController.chatImage);
+router.get("/chat", viewController.viewChat);
+/* POST. */
+router.post("/openai/chat", chatGPTController.chatMessage);
+router.post("/openai/image", chatGPTController.chatImage);
 
 
 

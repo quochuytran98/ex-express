@@ -3754,10 +3754,10 @@
   "resolved" "https://registry.npmjs.org/node-domexception/-/node-domexception-1.0.0.tgz"
   "version" "1.0.0"
 
-"node-fetch@^2.6.7":
-  "integrity" "sha512-ZjMPFEfVx5j+y2yF35Kzx5sF7kDzxuDj6ziH4FFbOp87zKDZNx8yExJIb05OGF4Nlt9IHFIMBkRl41VdvcNdbQ=="
-  "resolved" "https://registry.npmjs.org/node-fetch/-/node-fetch-2.6.7.tgz"
-  "version" "2.6.7"
+"node-fetch@^2.6.8":
+  "integrity" "sha512-DJm/CJkZkRjKKj4Zi4BsKVZh3ValV5IR5s7LVZnW+6YMh0W1BfNA8XSs6DLMGYlId5F3KnA70uu2qepcR08Qqg=="
+  "resolved" "https://registry.npmjs.org/node-fetch/-/node-fetch-2.6.9.tgz"
+  "version" "2.6.9"
   dependencies:
     "whatwg-url" "^5.0.0"
 
@@ -4529,19 +4529,19 @@
   "resolved" "https://registry.npmjs.org/symbol-tree/-/symbol-tree-3.2.4.tgz"
   "version" "3.2.4"
 
-"telegraf@^4.11.2":
-  "integrity" "sha512-RGEh+NXkHbq1KcSSbJeVYhHMrEN4rymd9DSe3SoIV0886bJPBHLzYCNrOqnk9aeZE2Idwh5uK0X/xbR6jScQKQ=="
-  "resolved" "https://registry.npmjs.org/telegraf/-/telegraf-4.11.2.tgz"
-  "version" "4.11.2"
+"telegraf@^4.12.2":
+  "integrity" "sha512-PgwqI4wD86cMqVfFtEM9JkGGnMHgvgLJbReZMmwW4z35QeOi4DvbdItONld4bPnYn3A1jcO0SRKs0BXmR+x+Ew=="
+  "resolved" "https://registry.npmjs.org/telegraf/-/telegraf-4.12.2.tgz"
+  "version" "4.12.2"
   dependencies:
     "abort-controller" "^3.0.0"
     "debug" "^4.3.4"
     "mri" "^1.2.0"
-    "node-fetch" "^2.6.7"
+    "node-fetch" "^2.6.8"
     "p-timeout" "^4.1.0"
     "safe-compare" "^1.1.4"
     "sandwich-stream" "^2.0.2"
-    "typegram" "^4.1.0"
+    "typegram" "^4.3.0"
 
 "terminal-link@^2.0.0":
   "integrity" "sha512-un0FmiRUQNr5PJqy9kP7c40F5BOfpGlYTrxonDChEZB7pzZxRNp/bt+ymiy9/npwXya9KH99nJ/GXFIiUkYGFQ=="
@@ -4689,10 +4689,10 @@
   dependencies:
     "is-typedarray" "^1.0.0"
 
-"typegram@^4.1.0":
-  "integrity" "sha512-OejXXNRh3bb6TQKbUM0k1p1wnEYCrZd66TNLeZeV2S6s4XWkCmVHONXqBTPtWpaq+IUxSyQwKJ1XXyN17Lr0+w=="
-  "resolved" "https://registry.npmjs.org/typegram/-/typegram-4.1.0.tgz"
-  "version" "4.1.0"
+"typegram@^4.3.0":
+  "integrity" "sha512-pS4STyOZoJ++Mwa9GPMTNjOwEzMkxFfFt1By6IbMOJfheP0utMP/H1ga6J9R4DTjAYBr0UDn4eQg++LpWBvcAg=="
+  "resolved" "https://registry.npmjs.org/typegram/-/typegram-4.3.0.tgz"
+  "version" "4.3.0"
 
 "undefsafe@^2.0.5":
   "integrity" "sha512-WxONCrssBM8TSPRqN5EmsjVrsv4A8X12J4ArBiiayv3DyyG3ZlIg6yysuuSYdZsVz3TKcTg2fd//Ujd4CHV1iA=="
